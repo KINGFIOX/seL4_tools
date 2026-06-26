@@ -111,6 +111,12 @@ function(ApplyData61ElfLoaderSettings kernel_platform kernel_sel4_arch)
             CACHE INTERNAL "" FORCE
         )
     endif()
+    if(${kernel_platform} STREQUAL "qemu-loongarch64-virt")
+        set(IMAGE_START_ADDR
+            0x81000000
+            CACHE INTERNAL "" FORCE
+        )
+    endif()
     if(KernelPlatformStar64)
         set(UseRiscVOpenSBI
             OFF

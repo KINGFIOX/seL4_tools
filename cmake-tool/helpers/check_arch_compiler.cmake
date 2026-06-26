@@ -53,6 +53,14 @@ function(check_arch_clang)
                 correct_triple
                 "${TRIPLE}"
         )
+    elseif("${KernelSel4Arch}" STREQUAL "loongarch64")
+        string(
+            REGEX
+                MATCH
+                "^loongarch64"
+                correct_triple
+                "${TRIPLE}"
+        )
     else()
         message(SEND_ERROR "KernelSel4Arch is not set to a valid arch")
     endif()
@@ -80,6 +88,8 @@ function(check_arch_gcc)
         set(compiler_variable "__riscv_xlen == 32")
     elseif("${KernelSel4Arch}" STREQUAL "riscv64")
         set(compiler_variable "__riscv_xlen == 64")
+    elseif("${KernelSel4Arch}" STREQUAL "loongarch64")
+        set(compiler_variable "defined(__loongarch64)")
     else()
         message(SEND_ERROR "KernelSel4Arch is not set to a valid arch")
     endif()

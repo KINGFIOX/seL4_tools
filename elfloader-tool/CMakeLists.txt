@@ -26,10 +26,10 @@ config_choice(
     ElfloaderImage
     ELFLOADER_IMAGE
     "Boot image type"
-    "elf;ElfloaderImageELF;IMAGE_ELF;KernelArchARM OR KernelArchRiscV"
-    "binary;ElfloaderImageBinary;IMAGE_BINARY;KernelArchARM OR KernelArchRiscV"
+    "elf;ElfloaderImageELF;IMAGE_ELF;KernelArchARM OR KernelArchLoongArch OR KernelArchRiscV"
+    "binary;ElfloaderImageBinary;IMAGE_BINARY;KernelArchARM OR KernelArchLoongArch OR KernelArchRiscV"
     "efi;ElfloaderImageEFI;IMAGE_EFI;KernelArchARM"
-    "uimage;ElfloaderImageUimage;IMAGE_UIMAGE;KernelArchARM OR KernelArchRiscV"
+    "uimage;ElfloaderImageUimage;IMAGE_UIMAGE;KernelArchARM OR KernelArchLoongArch OR KernelArchRiscV"
 )
 
 config_choice(
@@ -77,7 +77,7 @@ config_option(
     ElfloaderIncludeDtb ELFLOADER_INCLUDE_DTB
     "Include DTB in the CPIO in case bootloader doesn't provide one"
     DEFAULT ON
-    DEPENDS "KernelArchARM OR KernelArchRiscV"
+    DEPENDS "KernelArchARM OR KernelArchLoongArch OR KernelArchRiscV"
     DEFAULT_DISABLED OFF
 )
 

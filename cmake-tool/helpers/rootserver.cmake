@@ -55,9 +55,9 @@ function(DeclareRootserver rootservername)
     add_custom_target(
       rootserver_image ALL DEPENDS "${IMAGE_NAME}" "${KERNEL_IMAGE_NAME}" kernel.elf
                                    $<TARGET_FILE:${rootservername}> ${rootservername})
-  elseif(KernelArchARM OR KernelArchRiscV)
+  elseif(KernelArchARM OR KernelArchLoongArch OR KernelArchRiscV)
     set(IMAGE_NAME
-        "${CMAKE_BINARY_DIR}/images/${rootservername}-image-${KernelArch}-${KernelPlatform}")
+        "${CMAKE_BINARY_DIR}/images/${rootservername}-image-${KernelSel4Arch}-${KernelPlatform}")
     set(elf_target_file $<TARGET_FILE:elfloader>)
     if(KernelArchRiscV)
       if(UseRiscVOpenSBI)
